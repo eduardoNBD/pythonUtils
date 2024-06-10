@@ -1,6 +1,7 @@
 import argparse
 import qrcode 
 from PIL import Image, ImageDraw, ImageFont
+from OpenFolders import openFolder, getDownloadsFolders
 
 def generate_qr(url, logo=None):
     qr = qrcode.QRCode(
@@ -41,7 +42,11 @@ def generate_qr(url, logo=None):
  
     draw.text(text_position, url, font=font, fill="black")
     
-    img.save("outputs/qr.png")
+    folder = getDownloadsFolders();
+    
+    img.save(folder / "qr.png")
+
+    openFolder(folder)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Generar un código QR con bordes redondeados.')
