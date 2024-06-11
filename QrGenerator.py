@@ -2,6 +2,7 @@ import argparse
 import qrcode 
 from PIL import Image, ImageDraw, ImageFont
 from OpenFolders import openFolder, getDownloadsFolders
+import os
 
 def generate_qr(url, logo=None):
     qr = qrcode.QRCode(
@@ -43,8 +44,15 @@ def generate_qr(url, logo=None):
     draw.text(text_position, url, font=font, fill="black")
     
     folder = getDownloadsFolders();
+    file   = "qr"
+    index  = 0
+
+    while os.path.isfile(folder / (file+".png")):
+        index+= 1
+        file = file+"_"+str(index)
     
-    img.save(folder / "qr.png")
+    file = file+".png"
+    img.save(folder / file)
 
     openFolder(folder)
 

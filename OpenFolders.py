@@ -30,5 +30,5 @@ def getDownloadsFolders():
         return 0
 
 if __name__ == "__main__":
-    downloadFolder = getDownloadsFolders();
-    openFolder(downloadFolder);
+    downloadFolder = getDownloadsFolders()
+    openFolder(downloadFolder)
