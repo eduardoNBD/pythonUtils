@@ -61,6 +61,5 @@ if __name__ == "__main__":
     parser.add_argument('url', help='La URL que se desea codificar en el código QR.') 
     parser.add_argument('-l', '--logo', help='El nombre del archivo de imagen del logo a agregar al código QR.')
 
-    args = parser.parse_args()
-
+    args = parser.parse_args() 
     generate_qr(args.url, args.logo)

@@ -5,7 +5,7 @@ from pathlib import Path
 
 def openFolder(dir): 
     system = platform.system()
-
+     
     if system == "Windows":
         os.startfile(dir)
     elif system == "Darwin":   
@@ -14,8 +14,7 @@ def openFolder(dir):
         subprocess.run(["xdg-open", dir])
     else:
         raise NotImplementedError(f"Unsupported OS: {system}")
-
-    subprocess.run(["open", dir])
+        subprocess.run(["open", dir])
 
 def getDownloadsFolders():
     files = list(os.listdir(Path.home()))

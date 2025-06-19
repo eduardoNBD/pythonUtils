@@ -1,3 +1,4 @@
+import argparse
 from autocorrect import Speller
 import requests
 from bs4 import BeautifulSoup
@@ -16,9 +17,13 @@ def orthographyCorrector(text,lang = "es"):
     return errors
 
 if __name__ == "__main__":
-    url = "https://eduardodev.vercel.app/contact"
+    parser = argparse.ArgumentParser(description='Autocorrector')
+    parser.add_argument('url', help='La URL en la que se desea obtener texto')  
+
+    args = parser.parse_args() 
+     
     tags = ["p", "h1", "h2", "h3", "div", "span", "button", "a", "label"]
-    response = requests.get(url)
+    response = requests.get(args.url)
     response.encoding = 'utf-8'
     soup = BeautifulSoup(response.text, 'html.parser') 
 
